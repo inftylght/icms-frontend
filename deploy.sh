@@ -1,1 +1,1 @@
-cp -R -f ./dist /var/www/frontend/html
+cp -R -f dist/icms-frontend/* /www/frontend/html/*
