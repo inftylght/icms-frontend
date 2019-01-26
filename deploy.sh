@@ -1,1 +1,2 @@
-cp -R -f dist/icms-frontend/* /www/frontend/html/*
+git pull
+cp -R -f dist/icms-frontend/. /www/frontend/html/
