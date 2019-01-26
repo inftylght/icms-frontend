@@ -5,7 +5,6 @@
 ### Angular ###
 ## Angular ##
 # compiled output
-/dist
 /tmp
 /app/**/*.js
 /app/**/*.js.map
@@ -202,7 +201,6 @@ typings/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
 /tmp
 /out-tsc
 
