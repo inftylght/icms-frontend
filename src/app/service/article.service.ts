@@ -15,7 +15,6 @@ export class ArticleService {
         id: 1,
         title: "หัวข้อ 1",
         content: [
-
         ]
       },
       {
