@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit {
   { }
 
   ngOnInit() {
-    const articleList = this.articleService.list();
-    this.showArticleList = articleList.map((article) => {
+    const articleList = this.articleService.list().then(data=> {
+      console.log("DATA:", data)
+    });
+    this.showArticleList = [{id:1, tiele:"หัวข้อ1"}, {id:2, title:"หัวข้อ2"}, {id:3, title:"หัวข้อ3"}].map((article) => {
       return {
         id: article.id,
         title: article.title,

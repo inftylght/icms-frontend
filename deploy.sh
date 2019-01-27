@@ -1,4 +1,5 @@
+#!/usr/bin/env bash
 git pull
-ng build
+ng build --prod --env=prod
 rm -rf /var/www/frontend/html/*
 cp -a -f dist/icms-frontend/. /var/www/frontend/html/

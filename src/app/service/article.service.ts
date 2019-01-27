@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-
   private articleList;
+
   public get;
   public list;
 
-  constructor() {
+  constructor(private http: HttpClient) {
+    const configURL = environment.apiURL + '/article';
     const articleList = [
       {
         id: 1,
@@ -40,8 +43,9 @@ export class ArticleService {
     };
 
     this.list = function() {
-      console.log(articleList);
-      return articleList;
+      return new Promise(function(resolve, reject) {
+        http.get(configURL + "/list").subscribe(data=> resolve(data), error=> reject(error))
+      });
     }
   }
 }

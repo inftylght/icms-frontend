@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { ArticleComponent } from './component/article/article.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ArticleComponent } from './component/article/article.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
