@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { ArticleComponent } from './component/article/article.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MarkdownModule} from "ngx-markdown";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
