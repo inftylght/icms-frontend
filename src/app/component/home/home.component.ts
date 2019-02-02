@@ -8,7 +8,7 @@ import {ArticleService} from "../../service/article.service";
 })
 export class HomeComponent implements OnInit {
 
-  private showArticleList;
+  public showArticleList;
 
   constructor(
     private articleService: ArticleService

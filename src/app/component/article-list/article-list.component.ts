@@ -8,7 +8,7 @@ import {ArticleService} from "../../service/article.service";
 })
 export class ArticleListComponent implements OnInit {
 
-  private showArticleList;
+  public showArticleList;
 
   constructor(private articleService: ArticleService) {
     this.articleService.list().then(data => {

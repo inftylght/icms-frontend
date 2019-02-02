@@ -11,8 +11,8 @@ export class ArticleComponent implements OnInit {
 
   private routerSubscription;
   private articleId;
-  private contents;
-  private title;
+  public contents;
+  public title;
 
   constructor(private route:ActivatedRoute,
               private articleService:ArticleService) {}
