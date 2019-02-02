@@ -1,22 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ArticleService} from "../../service/article.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
 
   private showArticleList;
 
-  constructor(
-    private articleService: ArticleService
-  ) {
-  }
-
-  ngOnInit() {
-    const articleList = this.articleService.list({limit: 3}).then(data => {
+  constructor(private articleService: ArticleService) {
+    this.articleService.list().then(data => {
       this.showArticleList = data.map(article => {
         let tmpContent = "";
         for (const content of article.contents) {
@@ -35,6 +30,9 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+  }
+
+  ngOnInit() {
   }
 
 }

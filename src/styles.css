@@ -9,3 +9,23 @@
   flex-direction: row-reverse;
 }
 
+.main.main-raised.with-margin-bottom{
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 1.5625rem;
+  line-height: 1.4em;
+}
+markdown h1 {
+  font-size: 1.5625rem;
+  line-height: 1.4em;
+}
+markdown h2 {
+  font-size: 1.125rem;
+  line-height: 1.5em;
+}
+
+markdown li strong {
+  font-weight: 600;
+}

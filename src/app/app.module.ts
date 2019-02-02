@@ -8,13 +8,15 @@ import { HomeComponent } from './component/home/home.component';
 import { ArticleComponent } from './component/article/article.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MarkdownModule} from "ngx-markdown";
+import { ArticleListComponent } from './component/article-list/article-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,

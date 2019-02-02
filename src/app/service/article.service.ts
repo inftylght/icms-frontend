@@ -13,38 +13,16 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {
     const configURL = environment.apiURL + '/article';
-    const articleList = [
-      {
-        id: 1,
-        title: "หัวข้อ 1",
-        content: [
-        ]
-      },
-      {
-        id: 2,
-        title: "หัวข้อ 2",
-        content: [
-
-        ]
-      },
-      {
-        id: 3,
-        title: "หัวข้อ 3",
-        content: [
-
-        ]
-      }
-    ];
 
     this.get = function(id) {
-      return articleList.find((article) => {
-        return article.id === id
+      return new Promise(function(resolve, reject) {
+        http.get(`${configURL}/${id}`).subscribe(data => resolve(data), error => reject(error))
       })
     };
 
-    this.list = function() {
+    this.list = function(query) {
       return new Promise(function(resolve, reject) {
-        http.get(configURL + "/list").subscribe(data=> resolve(data), error=> reject(error))
+        http.get(configURL + "/list", {params: query}).subscribe(data=> resolve(data), error=> reject(error))
       });
     }
   }
