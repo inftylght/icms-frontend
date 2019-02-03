@@ -13,20 +13,10 @@ export class ArticleListComponent implements OnInit {
   constructor(private articleService: ArticleService) {
     this.articleService.list().then(data => {
       this.showArticleList = data.map(article => {
-        let tmpContent = "";
-        for (const content of article.contents) {
-          if (content.type==='text') {
-            tmpContent += content.content;
-          }
-        }
-        if (tmpContent.length>200) {
-          tmpContent = tmpContent.substr(0, 200)+ "...";
-        }
-        tmpContent = tmpContent.replace(/[#*>]+/g, '');
         return {
           id: article.id,
           title: article.title,
-          content: tmpContent
+          content: article.text
         }
       });
     });

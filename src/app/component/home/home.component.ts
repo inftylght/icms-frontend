@@ -18,20 +18,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     const articleList = this.articleService.list({limit: 3}).then(data => {
       this.showArticleList = data.map(article => {
-        let tmpContent = "";
-        for (const content of article.contents) {
-          if (content.type==='text') {
-            tmpContent += content.content;
-          }
-        }
-        if (tmpContent.length>200) {
-          tmpContent = tmpContent.substr(0, 200)+ "...";
-        }
-        tmpContent = tmpContent.replace(/[#*>]+/g, '');
         return {
           id: article.id,
           title: article.title,
-          content: tmpContent
+          content: article.text
         }
       });
     });

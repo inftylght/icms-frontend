@@ -4,9 +4,7 @@
       <div class="title">
         {{title}}
       </div>
-      <div *ngFor="let articleContent of contents">
-        <markdown ngPreserveWhitespaces *ngIf="articleContent.type==='text'" [data]="articleContent.content"></markdown>
-      </div>
+      <markdown ngPreserveWhitespaces  [data]="text"></markdown>
     </div>
   </div>
 </div>
