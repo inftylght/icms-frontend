@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-.card-footer.card-read-continue-link{
+.card-footer.card-read-continue-link {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.footer.content-right{
+.footer.content-right {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.main.main-raised.with-margin-bottom{
+.main.main-raised.with-margin-bottom {
   margin-bottom: 50px;
 }
 
@@ -17,10 +17,12 @@
   font-size: 1.5625rem;
   line-height: 1.4em;
 }
+
 markdown h1 {
   font-size: 1.5625rem;
   line-height: 1.4em;
 }
+
 markdown h2 {
   font-size: 1.125rem;
   line-height: 1.5em;
@@ -29,3 +31,10 @@ markdown h2 {
 markdown li strong {
   font-weight: 600;
 }
+
+@media (min-width: 992px) {
+  .col-lg-margin-1 {
+    margin-left: 8.333333%;
+  }
+}
+
