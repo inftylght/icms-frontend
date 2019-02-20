@@ -9,6 +9,7 @@ import { ArticleComponent } from './component/article/article.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MarkdownModule} from "ngx-markdown";
 import { ArticleListComponent } from './component/article-list/article-list.component';
+import { ZeroPaddingPipe } from './pipe/zero-padding.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ArticleListComponent } from './component/article-list/article-list.comp
     AppComponent,
     HomeComponent,
     ArticleComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    ZeroPaddingPipe
   ],
   imports: [
     BrowserModule,
