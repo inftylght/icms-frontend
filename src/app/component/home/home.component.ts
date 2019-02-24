@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
     this.articleService.list().then(data => {
       this.articleList = data;
-      showArticleByLanguage(this.language);
+      showArticleByLanguage('TH');
     });
 
     const showArticleByLanguage = (lang) => {
