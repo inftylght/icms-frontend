@@ -38,3 +38,6 @@ markdown li strong {
   }
 }
 
+markdown b, markdown strong {
+  font-weight: bold;
+}
