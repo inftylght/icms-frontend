@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
-import {LocalStorageService} from 'ngx-webstorage';
+import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   public showArticleList;
   private articleList;
+  
+  @LocalStorage('language')
   private language;
 
   constructor(
@@ -22,13 +24,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.localStorageService.observe('language')
       .subscribe((language) => {
-        this.language = language;
-        showArticleByLanguage(this.language);
+        showArticleByLanguage(language);
       });
 
     this.articleService.list().then(data => {
       this.articleList = data;
-      showArticleByLanguage('TH');
+      showArticleByLanguage(this.language);
     });
 
     const showArticleByLanguage = (lang) => {
