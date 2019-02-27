@@ -1,13 +1,13 @@
 <div class="main main-raised with-margin-bottom" style="background-color: #fcfcfc;">
   <div class="section section-basic">
-    <div class="row">
+    <div class="row" style="margin-left: 30px; margin-right: 35px;">
       <div *ngFor="let article of showArticleList; let i = index" class="col-lg-4 card col-lg-margin-1"
            style="padding-left: 0;">
         <a routerLink="/article/{{article.id}}" style="height: 100%; color: black;">
           <div style="width:100%; display: flex; height: inherit;">
 
             <div style="background-color: #33a74c; min-width: 80px; text-align: center;">
-              <h1 style="color:white;">{{i}}</h1>
+              <h1 style="color:white;">{{article.id}}</h1>
             </div>
             <div style="margin-left: 20px;">
               <h5 style="color: #eb822d;">{{article.title}}</h5>

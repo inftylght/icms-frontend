@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -14,6 +15,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
   private articleId;
   public text;
   public title;
+  public youtube;
 
   private article;
 
@@ -22,8 +24,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private articleService: ArticleService,
-              private localStorageService: LocalStorageService) {
-  }
+              private localStorageService: LocalStorageService,
+              private router: Router,
+              private domSantization: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.text = '';
@@ -40,6 +44,15 @@ export class ArticleComponent implements OnInit, OnDestroy {
         this.title = this.article.title;
         this.text = this.article.text;
       }
+      console.log(this.article);
+      if (this.article.youtube) {
+        const origin = window.location.origin
+        this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
+          `https://www.youtube.com/embed/${this.article.youtube}?autoplay=0&origin=${origin}`);
+
+        console.log('youtube', this.youtube);
+      }
+
     };
 
     this.routerSubscription = this.route.params.subscribe((param) => {
