@@ -1,29 +1,24 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  private articleList;
 
-  public get;
-  public list;
+  private configURL = environment.apiURL + '/article';
 
-  constructor(private http: HttpClient) {
-    const configURL = environment.apiURL + '/article';
+  get(id) {
+    return this.http.get(`${this.configURL}/${id}`).toPromise();
+  }
 
-    this.get = function(id) {
-      return new Promise(function(resolve, reject) {
-        http.get(`${configURL}/${id}`).subscribe(data => resolve(data), error => reject(error))
-      })
-    };
+  list(query = {}) {
+    return this.http.get(`${this.configURL}/list`, {params: query}).toPromise();
+  }
 
-    this.list = function(query) {
-      return new Promise(function(resolve, reject) {
-        http.get(configURL + "/list", {params: query}).subscribe(data=> resolve(data), error=> reject(error))
-      });
-    }
+  constructor(
+    private http: HttpClient
+  ) {
   }
 }

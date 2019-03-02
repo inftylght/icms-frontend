@@ -10,8 +10,9 @@ import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 export class HomeComponent implements OnInit {
 
   public showArticleList;
+  public articleText;
   private articleList;
-  
+
   @LocalStorage('language')
   private language;
 
@@ -33,22 +34,25 @@ export class HomeComponent implements OnInit {
     });
 
     const showArticleByLanguage = (lang) => {
-      console.log(lang);
-      this.showArticleList = this.articleList.map(article => {
-        if (lang === 'TH') {
+      if (lang === 'TH') {
+        this.articleText = 'บทความ';
+        this.showArticleList = this.articleList.map(article => {
           return {
             id: article.id,
             title: article.title,
             content: article.text
           };
-        } else {
+        });
+      } else {
+        this.articleText = 'Article';
+        this.showArticleList = this.articleList.map(article => {
           return {
             id: article.id,
             title: article.titleEN,
             content: article.textEN
           };
-        }
-      });
+        });
+      }
     };
   }
 

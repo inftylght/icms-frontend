@@ -15,14 +15,20 @@ export class AppComponent implements OnInit {
 
   public title;
   public titleDescription;
+  public article;
+  public calculate;
 
   changeTitleByLang(language) {
     if (language === 'EN') {
       this.title = 'Non-life insurance library';
       this.titleDescription = 'Curious about insurance? you can learn here.';
+      this.article = 'Articl';
+      this.calculate = 'Calculate';
     } else {
       this.title = 'ห้องสมุดประกันวินาศภัย';
       this.titleDescription = 'อยากรู้เกี่ยวกับประกันสามารถเรียนรู้ได้ที่นี่';
+      this.article = 'บทความ';
+      this.calculate = 'คำนวน';
     }
   }
 

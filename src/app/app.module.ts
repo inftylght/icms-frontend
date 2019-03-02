@@ -12,6 +12,7 @@ import { ZeroPaddingPipe } from './pipe/zero-padding.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {MarkdownModule} from 'ngx-markdown';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { CalculateListComponent } from './component/calculate-list/calculate-list.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     HomeComponent,
     ArticleComponent,
     ArticleListComponent,
-    ZeroPaddingPipe
+    ZeroPaddingPipe,
+    CalculateListComponent
   ],
   imports: [
     NgxWebstorageModule.forRoot(),

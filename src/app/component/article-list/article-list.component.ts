@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
-import {LocalStorageService} from 'ngx-webstorage';
+import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-article-list',
@@ -11,6 +11,8 @@ export class ArticleListComponent implements OnInit {
 
   public showArticleList;
   private articleList;
+
+  @LocalStorage('language')
   private language;
 
   constructor(
@@ -19,8 +21,7 @@ export class ArticleListComponent implements OnInit {
   ) {
     localStorageService.observe('language')
       .subscribe((language) => {
-        this.language = language;
-        showArticleByLanguage(this.language);
+        showArticleByLanguage(language);
       });
 
     this.articleService.list().then(data => {
@@ -29,7 +30,7 @@ export class ArticleListComponent implements OnInit {
     });
 
     const showArticleByLanguage = (lang) => {
-      console.log(lang)
+      console.log(lang);
       this.showArticleList = this.articleList.map(article => {
         if (lang === 'TH') {
           return {
