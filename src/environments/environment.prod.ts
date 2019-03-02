@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://api.nl-insu.com/web'
+  apiURL: 'https://api.nl-insu.com/web'
 };
