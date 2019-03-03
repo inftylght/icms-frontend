@@ -106,7 +106,13 @@ export class CalculateComponent implements OnInit {
 
   summary() {
     const v = this.forms.map(form => {
-      return Number(form.value);
+      let value = 0;
+      try {
+        value = Number(form.value);
+      } catch (error) {
+        console.error(error);
+      }
+      return value;
     });
     this.result = eval(this.fomula);
   }
