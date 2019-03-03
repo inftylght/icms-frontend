@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import localeTH from '@angular/common/locales/th';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,7 +16,9 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
 import { CalculateListComponent } from './component/calculate-list/calculate-list.component';
 import { CalculateComponent } from './component/calculate/calculate.component';
 import {FormsModule} from '@angular/forms';
+import {registerLocaleData} from '@angular/common';
 
+registerLocaleData(localeTH)
 
 @NgModule({
   declarations: [

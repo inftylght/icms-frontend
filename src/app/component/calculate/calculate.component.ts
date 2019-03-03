@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, LOCALE_ID, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {CalculateService} from '../../service/calculate.service';
+import {formatCurrency} from '@angular/common';
 
 @Component({
   selector: 'app-calculate',
@@ -27,7 +28,8 @@ export class CalculateComponent implements OnInit {
     private route: ActivatedRoute,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private calculateService: CalculateService
+    private calculateService: CalculateService,
+    @Inject(LOCALE_ID) public locale: string
   ) {
   }
 
@@ -114,6 +116,7 @@ export class CalculateComponent implements OnInit {
       }
       return value;
     });
-    this.result = eval(this.fomula);
+    const result = eval(this.fomula);
+    this.result = formatCurrency(result, 'th_TH', '');
   }
 }
