@@ -17,22 +17,22 @@ export class CalculateListComponent implements OnInit {
   private language;
 
   private showCalculateByLanguage(lang) {
-    if (lang === 'TH') {
-      this.calculateText = 'คำนวน';
-      this.showCalculateList = this.calculateList.map((calculate) => {
-        console.log(calculate);
-        return {
-          id: calculate.id,
-          name: calculate.name
-        };
-      });
-    } else {
+    if (lang === 'EN') {
       this.calculateText = 'Calculate';
       this.showCalculateList = this.calculateList.map((calculate) => {
         console.log(calculate);
         return {
           id: calculate.id,
           name: calculate.nameEN
+        };
+      });
+    } else {
+      this.calculateText = 'คำนวน';
+      this.showCalculateList = this.calculateList.map((calculate) => {
+        console.log(calculate);
+        return {
+          id: calculate.id,
+          name: calculate.name
         };
       });
     }

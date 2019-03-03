@@ -34,22 +34,22 @@ export class HomeComponent implements OnInit {
     });
 
     const showArticleByLanguage = (lang) => {
-      if (lang === 'TH') {
-        this.articleText = 'บทความ';
-        this.showArticleList = this.articleList.map(article => {
-          return {
-            id: article.id,
-            title: article.title,
-            content: article.text
-          };
-        });
-      } else {
+      if (lang === 'EN') {
         this.articleText = 'Article';
         this.showArticleList = this.articleList.map(article => {
           return {
             id: article.id,
             title: article.titleEN,
             content: article.textEN
+          };
+        });
+      } else {
+        this.articleText = 'บทความ';
+        this.showArticleList = this.articleList.map(article => {
+          return {
+            id: article.id,
+            title: article.title,
+            content: article.text
           };
         });
       }

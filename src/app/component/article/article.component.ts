@@ -44,7 +44,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
         this.title = this.article.title;
         this.text = this.article.text;
       }
-      console.log(this.article);
       if (this.article.youtube) {
         const origin = window.location.origin
         this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(

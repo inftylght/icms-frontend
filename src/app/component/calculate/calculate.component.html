@@ -1,0 +1,59 @@
+<div class="main main-raised with-margin-bottom">
+  <div class="section section-basic">
+    <div class="container">
+      <div class="title">
+        {{title}}
+      </div>
+      <div class="card-body" *ngFor="let form of forms; let calculateIndex = index;"
+           [hidden]="calculateIndex!==currentFormIndex || this.result">
+        <div class="tab-content">
+          <div class="form-group" *ngIf="form.type==='Number'">
+            <label for="exampleInput1" class="bmd-label-floating">{{form.name}}</label>
+            <input type="number" [(ngModel)]="form.value" class="form-control" id="exampleInput1">
+          </div>
+          <div class="tab-content" *ngIf="form.type==='Selection'">
+            <div class="title">
+              <h3>{{form.name}}</h3>
+            </div>
+            <div class="form-check" *ngFor="let option of form.selectionList">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" [(ngModel)]="form.value" name="exampleRadios"
+                       id="exampleRadios1" [value]="option.value">
+                {{option.name}}
+                <span class="circle">
+                    <span class="check"></span>
+                  </span>
+              </label>
+            </div>
+          </div>
+          <div class="tab-pane active text-center">
+            <button class="btn btn-primary btn-fab btn-round" (click)="goBack()"
+                    [hidden]="calculateIndex===0">
+              <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+            <button class="btn btn-primary btn-fab btn-round" (click)="next()"
+                    [hidden]="calculateIndex===(forms.length-1)" style="margin-left: 10px;">
+              <i class="material-icons">keyboard_arrow_right</i>
+            </button>
+            <button class="btn btn-success btn-fab btn-round" (click)="summary()"
+                    [hidden]="calculateIndex<(forms.length-1)" style="margin-left: 10px;">
+              <i class="material-icons">check_circle</i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" [hidden]="!this.result">
+        <div class="tab-content">
+          <div class="tab-content">
+            <div class="title">
+              <h3>{{resultTxt}}</h3>
+            </div>
+            <div class="text-center">
+              <h1>{{result}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

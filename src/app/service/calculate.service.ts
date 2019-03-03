@@ -16,4 +16,8 @@ export class CalculateService {
   list() {
     return this.http.get(`${this.configURL}/list`).toPromise();
   }
+
+  get(id) {
+    return this.http.get(`${this.configURL}/${id}`).toPromise();
+  }
 }

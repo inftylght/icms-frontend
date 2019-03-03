@@ -13,6 +13,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MarkdownModule} from 'ngx-markdown';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { CalculateListComponent } from './component/calculate-list/calculate-list.component';
+import { CalculateComponent } from './component/calculate/calculate.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import { CalculateListComponent } from './component/calculate-list/calculate-lis
     ArticleComponent,
     ArticleListComponent,
     ZeroPaddingPipe,
-    CalculateListComponent
+    CalculateListComponent,
+    CalculateComponent
   ],
   imports: [
     NgxWebstorageModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     MarkdownModule.forRoot()
   ],
   providers: [],

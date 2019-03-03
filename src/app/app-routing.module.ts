@@ -4,12 +4,14 @@ import {HomeComponent} from "./component/home/home.component";
 import {ArticleComponent} from "./component/article/article.component";
 import {ArticleListComponent} from "./component/article-list/article-list.component";
 import {CalculateListComponent} from './component/calculate-list/calculate-list.component';
+import {CalculateComponent} from './component/calculate/calculate.component';
 
 const routes = [
   {path: '',  component: HomeComponent},
   {path: 'article/list', component: ArticleListComponent},
   {path: 'article/:id', component: ArticleComponent},
-  {path: 'calculate/list', component: CalculateListComponent}
+  {path: 'calculate/list', component: CalculateListComponent},
+  {path: 'calculate/:id', component: CalculateComponent}
 ];
 
 @NgModule({
