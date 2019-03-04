@@ -15,7 +15,7 @@
             <div class="title">
               <h3>{{form.name}}</h3>
             </div>
-            <div class="form-check" *ngFor="let option of form.selectionList" style="margin-top: 10px;">
+            <div class="form-check" *ngFor="let option of form.selectionList" style="margin-top: 30px; margin-bottom: 30px;">
               <label class="form-check-label">
                 <input class="form-check-input" type="radio" [(ngModel)]="form.value" name="exampleRadios"
                        [value]="option.value">
