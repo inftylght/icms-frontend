@@ -11,8 +11,19 @@
         <a routerLink="/calculate/{{calculate.id}}" style="height: 100%; color: black;">
           <div style="width:100%; display: flex; height: inherit;">
 
-            <div style="background-color: #33a74c; min-width: 80px; text-align: center;">
-              <h1 style="color:white;">{{calculate.id}}</h1>
+            <div style="min-width: 80px; text-align: center;"
+                 [ngClass]="{
+                    'box-rainbow-red': (i%8)===0,
+                    'box-rainbow-orange': (i%8)===1,
+                    'box-rainbow-yellow': (i%8)===2,
+                    'box-rainbow-green': (i%8)===3,
+                    'box-rainbow-indigo': (i%8)===4,
+                    'box-rainbow-sky': (i%8)===5,
+                    'box-rainbow-blue': (i%8)===6,
+                    'box-rainbow-violet': (i%8)===7
+                 }"
+            >
+              <h1>00</h1>
             </div>
             <div style="margin-left: 20px;">
               <h5 style="color: #eb822d;">{{calculate.name}}</h5>
