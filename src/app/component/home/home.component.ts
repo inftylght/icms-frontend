@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   public showArticleList;
   public articleText;
+  public rainbowColorStyle;
+
   private articleList;
 
   @LocalStorage('language')
@@ -23,6 +25,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.rainbowColorStyle = [
+      {'background-color:': 'box-rainbow-red'},
+      {'background-color:': 'box-rainbow-orange'},
+      {'background-color:': 'box-rainbow-yellow'},
+      {'background-color:': 'box-rainbow-green'},
+      {'background-color:': 'box-rainbow-indigo'},
+      {'background-color:': 'box-rainbow-sky'},
+      {'background-color:': 'box-rainbow-blue'},
+      {'background-color:': 'box-rainbow-violet'}
+    ];
     this.localStorageService.observe('language')
       .subscribe((language) => {
         showArticleByLanguage(language);

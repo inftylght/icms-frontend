@@ -11,8 +11,18 @@
         <a routerLink="/article/{{article.id}}" style="height: 100%; color: black;">
           <div style="width:100%; display: flex; height: inherit;">
 
-            <div style="background-color: #33a74c; min-width: 80px; text-align: center;">
-              <h1 style="color:white;">{{article.id}}</h1>
+            <div style="min-width: 80px; text-align: center;"
+                 [ngClass]="{
+                    'box-rainbow-red': (i%8)===0,
+                    'box-rainbow-orange': (i%8)===1,
+                    'box-rainbow-yellow': (i%8)===2,
+                    'box-rainbow-green': (i%8)===3,
+                    'box-rainbow-indigo': (i%8)===4,
+                    'box-rainbow-sky': (i%8)===5,
+                    'box-rainbow-blue': (i%8)===6,
+                    'box-rainbow-violet': (i%8)===7
+                 }">
+              <h1>00</h1>
             </div>
             <div style="margin-left: 20px;">
               <h5 style="color: #eb822d;">{{article.title}}</h5>
@@ -28,80 +38,80 @@
 </div>
 
 <!--<div class="main main-raised with-margin-bottom">-->
-  <!--<div class="section section-basic">-->
-    <!--<div class="container">-->
-      <!--<div class="title">-->
-        <!--<h2>บทความ</h2>-->
-      <!--</div>-->
-      <!--<div class="content">-->
-        <!--<div class="row">-->
-          <!--<div class="col-lg-4" *ngFor="let article of showArticleList">-->
-            <!--<div class="card">-->
-              <!--<div class="card-header card-header-info">-->
-                <!--{{article.title}}-->
-              <!--</div>-->
-              <!--<div class="card-body">-->
-                <!--{{article.content}}-->
-              <!--</div>-->
-              <!--<div class="card-footer footer content-right">-->
-                <!--<a routerLink="/article/{{article.id}}">อ่านต่อ>></a>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="footer content-right">-->
-        <!--<a routerLink="/article/list">ดูทั้งหมด>></a>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="section section-basic">-->
+<!--<div class="container">-->
+<!--<div class="title">-->
+<!--<h2>บทความ</h2>-->
+<!--</div>-->
+<!--<div class="content">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-4" *ngFor="let article of showArticleList">-->
+<!--<div class="card">-->
+<!--<div class="card-header card-header-info">-->
+<!--{{article.title}}-->
+<!--</div>-->
+<!--<div class="card-body">-->
+<!--{{article.content}}-->
+<!--</div>-->
+<!--<div class="card-footer footer content-right">-->
+<!--<a routerLink="/article/{{article.id}}">อ่านต่อ>></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="footer content-right">-->
+<!--<a routerLink="/article/list">ดูทั้งหมด>></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 
 
 <!--<div class="main main-raised with-margin-bottom" style="display:none;">-->
-  <!--<div class="section section-basic">-->
-    <!--<div class="container">-->
-      <!--<div class="title">-->
-        <!--<h2>การคำนวน</h2>-->
-      <!--</div>-->
-      <!--<div class="row">-->
-        <!--<div class="col-lg-4">-->
-          <!--<div class="card">-->
-            <!--<div class="card-header card-header-info">-->
-              <!--ห้วข้อ 1-->
-            <!--</div>-->
-            <!--<div class="card-body">-->
-              <!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
-              <!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
-              <!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-4">-->
-          <!--<div class="card">-->
-            <!--<div class="card-header card-header-info">-->
-              <!--ห้วข้อ 2-->
-            <!--</div>-->
-            <!--<div class="card-body">-->
-              <!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
-              <!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
-              <!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-4">-->
-          <!--<div class="card">-->
-            <!--<div class="card-header card-header-info">-->
-              <!--ห้วข้อ 3-->
-            <!--</div>-->
-            <!--<div class="card-body">-->
-              <!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
-              <!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
-              <!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="section section-basic">-->
+<!--<div class="container">-->
+<!--<div class="title">-->
+<!--<h2>การคำนวน</h2>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-lg-4">-->
+<!--<div class="card">-->
+<!--<div class="card-header card-header-info">-->
+<!--ห้วข้อ 1-->
+<!--</div>-->
+<!--<div class="card-body">-->
+<!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
+<!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
+<!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4">-->
+<!--<div class="card">-->
+<!--<div class="card-header card-header-info">-->
+<!--ห้วข้อ 2-->
+<!--</div>-->
+<!--<div class="card-body">-->
+<!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
+<!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
+<!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4">-->
+<!--<div class="card">-->
+<!--<div class="card-header card-header-info">-->
+<!--ห้วข้อ 3-->
+<!--</div>-->
+<!--<div class="card-body">-->
+<!--ประกันภัยหมายถึง “สัญญาที่จะจ่ายสินไหมทดแทนสำหรับการสูญเสียบางอย่างที่อาจเกิดขึ้นในอนาคต-->
+<!--แลกกับการจ่ายเงินเป็นงวดๆ ประกันภัยออกแบบมาเพื่อปกป้องความมั่นคงทางการเงินของบุคคล บริษัท หรือองค์กรใดๆ-->
+<!--ก็ตาม ในกรณีที่เกิดเหตุการณ์ไม่คาดฝัน”-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
