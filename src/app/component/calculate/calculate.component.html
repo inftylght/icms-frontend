@@ -15,10 +15,10 @@
             <div class="title">
               <h3>{{form.name}}</h3>
             </div>
-            <div class="form-check" *ngFor="let option of form.selectionList">
+            <div class="form-check" *ngFor="let option of form.selectionList" style="margin-top: 10px;">
               <label class="form-check-label">
                 <input class="form-check-input" type="radio" [(ngModel)]="form.value" name="exampleRadios"
-                       [value]="option.value" value="{{option.value}}">
+                       [value]="option.value">
                 {{option.name}}
                 <span class="circle">
                     <span class="check"></span>
@@ -27,7 +27,6 @@
             </div>
           </div>
           <div class="tab-pane active text-center">
-            {{form.value}}
             <button class="btn btn-primary btn-fab btn-round" (click)="goBack()"
                     [hidden]="calculateIndex===0">
               <i class="material-icons">keyboard_arrow_left</i>
