@@ -15,7 +15,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
   private articleId;
   public text;
   public title;
-  public youtube;
 
   private article;
 
@@ -25,8 +24,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private articleService: ArticleService,
               private localStorageService: LocalStorageService,
-              private router: Router,
-              private domSantization: DomSanitizer
+              private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,13 +41,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
       } else {
         this.title = this.article.title;
         this.text = this.article.text;
-      }
-      if (this.article.youtube) {
-        const origin = window.location.origin
-        this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
-          `https://www.youtube.com/embed/${this.article.youtube}?autoplay=0&origin=${origin}`);
-
-        console.log('youtube', this.youtube);
       }
 
     };
