@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
@@ -16,6 +16,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
   public text;
   public title;
   public youtube;
+  @LocalStorage('currentPage')
+  public currentPage;
 
   private article;
 
@@ -27,7 +29,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
               private localStorageService: LocalStorageService,
               private router: Router,
               private domSantization: DomSanitizer
-  ) {}
+  ) {
+    this.currentPage = 'article';
+  }
 
   ngOnInit() {
     this.text = '';
@@ -62,6 +66,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
           setArticleByLanguage(this.language);
         });
     });
+  }
+
+  ngAfterViewChecked() {
+
   }
 
   ngOnDestroy() {

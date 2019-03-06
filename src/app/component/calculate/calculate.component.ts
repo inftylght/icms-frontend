@@ -1,4 +1,4 @@
-import {Component, Inject, LOCALE_ID, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, LOCALE_ID, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
@@ -20,6 +20,8 @@ export class CalculateComponent implements OnInit {
   public currentFormIndex;
   public forms;
   public result;
+  @LocalStorage('currentPage')
+  public currentPage;
 
   @LocalStorage('language')
   private language;
@@ -31,6 +33,7 @@ export class CalculateComponent implements OnInit {
     private calculateService: CalculateService,
     @Inject(LOCALE_ID) public locale: string
   ) {
+    this.currentPage = 'calculate';
   }
 
   ngOnInit() {

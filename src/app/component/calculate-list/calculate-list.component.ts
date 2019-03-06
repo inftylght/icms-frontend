@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {CalculateService} from '../../service/calculate.service';
 
@@ -11,6 +11,9 @@ export class CalculateListComponent implements OnInit {
 
   public calculateText;
   public showCalculateList;
+  @LocalStorage('currentPage')
+  public currentPage;
+
   private calculateList;
 
   @LocalStorage('language')
@@ -42,6 +45,7 @@ export class CalculateListComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private calculateService: CalculateService
   ) {
+    this.currentPage = 'calculate';
   }
 
   ngOnInit() {

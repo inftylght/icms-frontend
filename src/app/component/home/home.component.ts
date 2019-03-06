@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   public showArticleList;
   public articleText;
   public rainbowColorStyle;
+  @LocalStorage('currentPage')
+  public currentPage;
 
   private articleList;
 
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
     private articleService: ArticleService,
     private localStorageService: LocalStorageService
   ) {
+    this.currentPage = 'article';
   }
 
   ngOnInit() {

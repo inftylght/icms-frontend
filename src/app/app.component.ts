@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LocalStorage} from 'ngx-webstorage';
+import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
+import {Local} from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,16 @@ import {LocalStorage} from 'ngx-webstorage';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor() {
+  constructor(
+    private localStorageService: LocalStorageService
+  ) {
   }
 
   @LocalStorage('language')
   private langulage;
+
+  @LocalStorage('currentPage')
+  public currentPage;
 
   public title;
   public titleDescription;
@@ -38,6 +44,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.localStorageService.observe('currentPage')
+      .subscribe((currentPage) => {
+        this.currentPage = currentPage;
+      });
+
     this.changeTitleByLang(this.langulage);
   }
 }
