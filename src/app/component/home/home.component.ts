@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public showArticleList;
   public articleText;
   public rainbowColorStyle;
+  public youtube;
 
   private articleList;
 
