@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
@@ -48,13 +48,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
         this.title = this.article.title;
         this.text = this.article.text;
       }
-      if (this.article.youtube) {
-        const origin = window.location.origin
-        this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
-          `https://www.youtube.com/embed/${this.article.youtube}?autoplay=0&origin=${origin}`);
-
-        console.log('youtube', this.youtube);
-      }
 
     };
 
@@ -66,10 +59,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
           setArticleByLanguage(this.language);
         });
     });
-  }
-
-  ngAfterViewChecked() {
-
   }
 
   ngOnDestroy() {

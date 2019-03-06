@@ -1,6 +1,7 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,6 @@ export class HomeComponent implements OnInit {
   public showArticleList;
   public articleText;
   public rainbowColorStyle;
-  @LocalStorage('currentPage')
-  public currentPage;
 
   private articleList;
 
@@ -22,12 +21,18 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private domSantization: DomSanitizer
   ) {
-    this.currentPage = 'article';
   }
 
   ngOnInit() {
+
+    const origin = window.location.origin;
+    const youtubeToken = 'T6Gz6ji0AGg';
+    this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${youtubeToken}?autoplay=0&origin=${origin}`);
+
     this.rainbowColorStyle = [
       {'background-color:': 'box-rainbow-red'},
       {'background-color:': 'box-rainbow-orange'},

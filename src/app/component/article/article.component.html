@@ -4,11 +4,6 @@
       <div class="title">
         {{title}}
       </div>
-      <div *ngIf="youtube" class="video-container" style="margin-bottom: 35px;">
-        <iframe id="ytplayer" type="text/html" width="640" height="360"
-                [src]="youtube"
-                frameborder="0"></iframe>
-      </div>
       <markdown ngPreserveWhitespaces  [data]="text"></markdown>
     </div>
   </div>
