@@ -61,6 +61,7 @@ export class CalculateComponent implements OnInit {
           name: form.nameEN,
           type: form.type,
           value: null,
+          variable: form.variable,
           selectionList: []
         };
         if (form.type === 'Selection') {
@@ -82,6 +83,7 @@ export class CalculateComponent implements OnInit {
           name: form.name,
           type: form.type,
           value: null,
+          variable: form.variable,
           selectionList: []
         };
         if (form.type === 'Selection') {
@@ -110,15 +112,10 @@ export class CalculateComponent implements OnInit {
   }
 
   summary() {
-    const v = this.forms.map(form => {
-      let value = 0;
-      try {
-        value = Number(form.value);
-      } catch (error) {
-        console.error(error);
-      }
-      return value;
-    });
+    const v = this.forms.reduce((map, form) => {
+      map[form.variable] = form.value;
+      return map;
+    }, {});
     const result = eval(this.fomula);
     this.result = formatCurrency(result, 'th_TH', '');
   }
