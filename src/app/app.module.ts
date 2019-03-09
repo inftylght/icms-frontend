@@ -16,8 +16,10 @@ import { CalculateListComponent } from './component/calculate-list/calculate-lis
 import { CalculateComponent } from './component/calculate/calculate.component';
 import {FormsModule} from '@angular/forms';
 import {registerLocaleData} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material';
 
-registerLocaleData(localeTH)
+registerLocaleData(localeTH);
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ registerLocaleData(localeTH)
   ],
   imports: [
     NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    MatRadioModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
