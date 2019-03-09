@@ -21,12 +21,16 @@ export class HomeComponent implements OnInit {
   @LocalStorage('language')
   private language;
 
+  @LocalStorage('currentPage')
+  public currentPage;
+
   constructor(
     private articleService: ArticleService,
     private localStorageService: LocalStorageService,
     private domSantization: DomSanitizer,
     private configSerivce: ConfigService
   ) {
+    this.currentPage = 'article';
   }
 
   async getConfig() {
