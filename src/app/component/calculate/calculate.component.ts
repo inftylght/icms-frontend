@@ -4,6 +4,7 @@ import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {CalculateService} from '../../service/calculate.service';
 import {formatCurrency} from '@angular/common';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-calculate',
@@ -20,6 +21,7 @@ export class CalculateComponent implements OnInit {
   public currentFormIndex;
   public forms;
   public result;
+  public warningRequireFieldTxt;
   @LocalStorage('currentPage')
   public currentPage;
 
@@ -31,7 +33,8 @@ export class CalculateComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private router: Router,
     private calculateService: CalculateService,
-    @Inject(LOCALE_ID) public locale: string
+    @Inject(LOCALE_ID) public locale: string,
+    private matSnackBar: MatSnackBar
   ) {
     this.currentPage = 'calculate';
   }
@@ -56,6 +59,7 @@ export class CalculateComponent implements OnInit {
     if (lang === 'EN') {
       this.title = this.calculate.nameEN;
       this.resultTxt = 'Result';
+      this.warningRequireFieldTxt = 'Please fill number or select all form before calculate';
       this.forms = this.calculate.forms.map(form => {
         const tmpForm = {
           name: form.nameEN,
@@ -78,6 +82,7 @@ export class CalculateComponent implements OnInit {
     } else {
       this.title = this.calculate.name;
       this.resultTxt = 'ผลลัพธ์';
+      this.warningRequireFieldTxt = 'โปรดกรอกทุกฟอร์มก่อนที่จะกด คำนวณ';
       this.forms = this.calculate.forms.map(form => {
         const tmpForm = {
           name: form.name,
@@ -112,11 +117,19 @@ export class CalculateComponent implements OnInit {
   }
 
   summary() {
+    let foundNotFillInForm = false;
     const v = this.forms.reduce((map, form) => {
       map[form.variable] = form.value;
+      if (form.value === null || isNaN(form.value)) {
+        foundNotFillInForm = true;
+      }
       return map;
     }, {});
-    const result = eval(this.fomula);
-    this.result = formatCurrency(result, 'th_TH', '');
+    if (foundNotFillInForm) {
+      this.matSnackBar.open(this.warningRequireFieldTxt, 'dismiss', {duration: 5000});
+    } else {
+      const result = eval(this.fomula);
+      this.result = formatCurrency(result, 'th_TH', '');
+    }
   }
 }
