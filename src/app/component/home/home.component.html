@@ -1,6 +1,6 @@
 <div class="main main-raised with-margin-bottom" style="background-color: #fcfcfc;">
   <div class="section section-basic">
-    <div class="video-container">
+    <div class="video-container" *ngIf="youtube">
       <iframe id="ytplayer" type="text/html" width="300" height="200"
               [src]="youtube"
               frameborder="0"></iframe>

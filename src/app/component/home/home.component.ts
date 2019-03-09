@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../service/article.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {DomSanitizer} from '@angular/platform-browser';
+import {ConfigService} from '../../service/config.service';
 
 @Component({
   selector: 'app-home',
@@ -23,16 +24,25 @@ export class HomeComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private localStorageService: LocalStorageService,
-    private domSantization: DomSanitizer
+    private domSantization: DomSanitizer,
+    private configSerivce: ConfigService
   ) {
+  }
+
+  async getConfig() {
+    const config = await this.configSerivce.getConfigMap();
+
+    const youtubeToke = config['HOME.YOUTUBE.TOKEN'];
+    if (youtubeToke) {
+      const origin = window.location.origin;
+      this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
+        `https://www.youtube.com/embed/${youtubeToke}?autoplay=0&origin=${origin}`);
+    }
   }
 
   ngOnInit() {
 
-    const origin = window.location.origin;
-    const youtubeToken = 'T6Gz6ji0AGg';
-    this.youtube = this.domSantization.bypassSecurityTrustResourceUrl(
-      `https://www.youtube.com/embed/${youtubeToken}?autoplay=0&origin=${origin}`);
+    this.getConfig();
 
     this.rainbowColorStyle = [
       {'background-color:': 'box-rainbow-red'},
